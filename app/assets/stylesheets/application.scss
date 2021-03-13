@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+.btn {
+  background-color: midnightblue;
+  color: white;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  width: 10rem;
+}
+
+.field {
+  input, select, textarea {
+    border: 1px solid lightgray;
+    margin-top: 0.5rem;
+    padding: 1rem;
+  }
+
+  textarea {
+    box-sizing: border-box;
+    height: 10rem;
+    max-width: 30rem;
+    width: 100%;
+  }
+}
+
+.field_with_errors {
+  background-color: transparent;
+  padding: 0;
+  width: 100%;
+
+  & > input, select, textarea {
+    border: 1px solid #c00;
+  }
+}
+
+.error_messages {
+  color: #c00;
+}
