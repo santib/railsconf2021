@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_153306) do
+ActiveRecord::Schema.define(version: 2021_03_13_224246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "field_configs", force: :cascade do |t|
+    t.bigint "form_config_id", null: false
+    t.string "name", null: false
+    t.string "label"
+    t.integer "field_type", null: false
+    t.text "options", array: true
+    t.integer "position"
+    t.boolean "required", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["form_config_id"], name: "index_field_configs_on_form_config_id"
+  end
+
+  create_table "form_configs", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "references", force: :cascade do |t|
     t.text "strengths_and_weaknesses", null: false
@@ -22,4 +41,5 @@ ActiveRecord::Schema.define(version: 2021_03_13_153306) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "field_configs", "form_configs"
 end

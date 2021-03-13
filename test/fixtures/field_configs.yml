@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  form_config: one
+  name: MyString
+  label: MyString
+  field_type: 1
+  options: MyText
+  position: 1
+  required: false
+
+two:
+  form_config: two
+  name: MyString
+  label: MyString
+  field_type: 1
+  options: MyText
+  position: 1
+  required: false
