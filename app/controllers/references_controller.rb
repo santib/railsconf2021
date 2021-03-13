@@ -12,7 +12,7 @@ class ReferencesController < ApplicationController
 
   # GET /references/new
   def new
-    @reference = Reference.new
+    @form = DynamicForm.new(form_config)
   end
 
   # GET /references/1/edit
@@ -21,16 +21,16 @@ class ReferencesController < ApplicationController
 
   # POST /references or /references.json
   def create
-    @reference = Reference.new(reference_params)
+    @form = DynamicForm.new(
+      form_config,
+      model: Reference.new(reference_params),
+      attributes: reference_params
+    )
 
-    respond_to do |format|
-      if @reference.save
-        format.html { redirect_to @reference, notice: "Reference was successfully created." }
-        format.json { render :show, status: :created, location: @reference }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @reference.errors, status: :unprocessable_entity }
-      end
+    if @form.save
+      redirect_to :references
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -64,6 +64,10 @@ class ReferencesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reference_params
-      params.require(:reference).permit(:strengths_and_weaknesses, :rating)
+      params.require(:dynamic_form).permit(:strengths_and_weaknesses, :rating)
+    end
+
+    def form_config
+      FormConfig.find_by!(title: :references)
     end
 end

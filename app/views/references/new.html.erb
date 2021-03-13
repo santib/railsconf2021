@@ -1,5 +1,5 @@
 <h1>New Reference</h1>
 
-<%= render 'form', reference: @reference %>
+<%= render 'dynamic_forms/form', form: @form, url: references_path %>
 
 <%= link_to 'Back', references_path %>
