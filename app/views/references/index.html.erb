@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>References</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Strengths and weaknesses</th>
+      <th>Rating</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @references.each do |reference| %>
+      <tr>
+        <td><%= reference.strengths_and_weaknesses %></td>
+        <td><%= reference.rating %></td>
+        <td><%= link_to 'Show', reference %></td>
+        <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
+        <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reference', new_reference_path %>

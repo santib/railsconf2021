@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Strengths and weaknesses:</strong>
+  <%= @reference.strengths_and_weaknesses %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @reference.rating %>
+</p>
+
+<%= link_to 'Edit', edit_reference_path(@reference) %> |
+<%= link_to 'Back', references_path %>
