@@ -1,0 +1,4 @@
+<div id="<%= "#{dom_id(field_config)}-repetition-#{repetition}" %>">
+  <%= f.public_send field_config.field_type, field_config.name, *[field_config.options, multiple: true, value: value].compact %>
+  <%= link_to "x", delete_dynamic_forms_repeatable_field_path(id: field_config.id, repetition: repetition), method: :delete, class: "remove-repetition" %>
+</div>

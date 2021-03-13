@@ -2,7 +2,11 @@
   <% form.field_configs.each do |field_config| %>
     <div class="field">
       <%= f.label field_config.name, field_config.label %>
-      <%= f.public_send field_config.field_type, field_config.name, *[field_config.options].compact %>
+      <% if field_config.repeatable? %>
+        <%= render "dynamic_forms/repeatable_fields", f: f, field_config: field_config, values: form.public_send(field_config.name) %>
+      <% else %>
+        <%= f.public_send field_config.field_type, field_config.name, *[field_config.options].compact %>
+      <% end %>
       <%= render "shared/errors", errors: form.errors[field_config.name] %>
     </div>
   <% end %>

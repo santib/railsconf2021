@@ -33,7 +33,7 @@
     box-sizing: border-box;
     height: 10rem;
     max-width: 30rem;
-    width: 100%;
+    width: 96%;
   }
 }
 
@@ -49,4 +49,9 @@
 
 .error_messages {
   color: #c00;
+}
+
+.remove-repetition {
+  vertical-align: top;
+  text-decoration: none;
 }

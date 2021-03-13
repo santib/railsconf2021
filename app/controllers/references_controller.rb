@@ -64,7 +64,9 @@ class ReferencesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reference_params
-      params.require(:dynamic_form).permit(:strengths_and_weaknesses, :rating)
+      params.require(:dynamic_form).permit(:strengths_and_weaknesses, :rating, other_comments: []).tap do |reference_params|
+        reference_params[:other_comments]&.reject!(&:blank?)
+      end
     end
 
     def form_config

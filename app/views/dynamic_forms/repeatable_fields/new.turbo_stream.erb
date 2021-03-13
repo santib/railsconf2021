@@ -1,0 +1,5 @@
+<%= turbo_stream.append dom_id(@field_config) do %>
+  <%= fields_for @form do |f| %>
+    <%= render "dynamic_forms/repeatable_field", f: f, field_config: @field_config, repetition: SecureRandom.uuid, value: nil %>
+  <% end %>
+<% end %>

@@ -1,0 +1,8 @@
+<div id="<%= dom_id(field_config) %>">
+  <% (values.presence || [nil]).each_with_index do |value, index| %>
+    <%= render "dynamic_forms/repeatable_field", f: f, field_config: field_config, repetition: index, value: value %>
+  <% end %>
+</div>
+<%= turbo_frame_tag "add-button-#{dom_id(field_config)}" do %>
+  <%= link_to "Add", new_dynamic_forms_repeatable_field_path(id: field_config.id), data: { controller: "turbo-streams", action: "turbo-streams#injectHeaders" } %>
+<% end %>

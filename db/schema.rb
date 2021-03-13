@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_224246) do
+ActiveRecord::Schema.define(version: 2021_03_13_230318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_224246) do
     t.boolean "required", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "repeatable", default: false, null: false
     t.index ["form_config_id"], name: "index_field_configs_on_form_config_id"
   end
 
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_224246) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "other_comments", array: true
   end
 
   add_foreign_key "field_configs", "form_configs"
